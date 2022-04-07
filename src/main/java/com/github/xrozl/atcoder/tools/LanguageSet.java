@@ -3,7 +3,7 @@ package com.github.xrozl.atcoder.tools;
 public enum LanguageSet {
 
     JAVA(true, "javac", "java", false, null, "\u001b[00;33mJava\u001b[00m"),
-    PYTHON(false, null, "python3", false, "Error", "\u001b[00;34mPython\u001b[00m");
+    PYTHON(false, null, "python3", false, null, "\u001b[00;34mPython\u001b[00m");
 
     private boolean compile, errorCheck;
     private String cmd4Compile, cmd4Run, L4Mat, errorChk;
