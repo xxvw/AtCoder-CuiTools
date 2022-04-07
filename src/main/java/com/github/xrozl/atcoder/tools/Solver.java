@@ -23,7 +23,17 @@ public class Solver {
     }
 
     public ResultSet run() {
-        ProcessBuilder builder = new ProcessBuilder(lang.getCmd4Run(), clazz);
+        ProcessBuilder builder = null;
+        if (lang.getCmd4Run().split(" ").length > 1) {
+            List<String> cmd = new ArrayList<>();
+            for (String str : lang.getCmd4Run().split(" ")) {
+                cmd.add(str.replaceAll("%name_without%", clazz.split("\\.")[0]));
+            }
+            cmd.add(clazz);
+            builder = new ProcessBuilder(cmd);
+        } else {
+            builder = new ProcessBuilder(lang.getCmd4Run().replaceAll("%name_without%", clazz.split("\\.")[0]), clazz);
+        }
         try {
             p = builder.start();
             long start = System.currentTimeMillis();

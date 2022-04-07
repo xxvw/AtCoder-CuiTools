@@ -1,6 +1,8 @@
 package com.github.xrozl.atcoder.tools;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompileTester {
 
@@ -16,7 +18,18 @@ public class CompileTester {
 
     public void compile() {
         try {
-            p = new ProcessBuilder(lang.getCmd4Compile(), f.getName()).start();
+            ProcessBuilder builder = null;
+            if (lang.getCmd4Compile().split(" ").length > 1) {
+                List<String> cmd = new ArrayList<>();
+                for (String str : lang.getCmd4Compile().split(" ")) {
+                    cmd.add(str);
+                }
+                cmd.add(f.getName());
+                builder = new ProcessBuilder(cmd);
+            } else {
+                builder = new ProcessBuilder(lang.getCmd4Compile(), f.getName());
+            }
+            p = builder.start();
             sb = new StringBuilder();
             new Thread(() -> {
                 try {
