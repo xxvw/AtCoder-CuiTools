@@ -16,7 +16,7 @@ public class CompileTester {
 
     public void compile() {
         try {
-            p = Runtime.getRuntime().exec("javac " + f.getPath());
+            p = new ProcessBuilder(lang.getCmd4Compile(), f.getName()).start();
             sb = new StringBuilder();
             new Thread(() -> {
                 try {
