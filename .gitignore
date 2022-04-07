@@ -3,3 +3,7 @@
 
 .idea/
 .vscode/
+
+# Project Test Files
+Main.java
+Main.class
