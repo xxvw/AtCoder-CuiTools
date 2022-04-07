@@ -7,13 +7,11 @@ public class CompileTester {
     private File f;
     private Process p;
     private StringBuilder sb;
+    private LanguageSet lang;
 
-    public CompileTester(File f) {
-        this.f = f;
-    }
-
-    public CompileTester(String path) {
-        this(new File(path));
+    public CompileTester(String f, LanguageSet lang) {
+        this.f = new File(f);
+        this.lang = lang;
     }
 
     public void compile() {

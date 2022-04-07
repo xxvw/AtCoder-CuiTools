@@ -12,16 +12,18 @@ public class Solver {
     private Process p;
     private String clazz;
     private long t;
+    private LanguageSet lang;
 
-    public Solver(String input, String correct, String clazz, double timeLimit) {
+    public Solver(String input, String correct, String clazz, double timeLimit, LanguageSet lang) {
         this.input = input;
         this.correct = correct;
         this.clazz = clazz;
         this.t = (long) (timeLimit * 1000);
+        this.lang = lang;
     }
 
     public ResultSet run() {
-        ProcessBuilder builder = new ProcessBuilder("java", clazz);
+        ProcessBuilder builder = new ProcessBuilder(lang.getCmd4Run(), clazz);
         try {
             p = builder.start();
             long start = System.currentTimeMillis();
@@ -53,14 +55,21 @@ public class Solver {
             }
             long end = System.currentTimeMillis();
 
+            if (p.exitValue() != 0) {
+                return new ResultSet(end-start, ErrorCode.CE);
+            }
+
             List<Byte> bufferBytes = new ArrayList<>();
             List<Byte> correctBytes = new ArrayList<>();
             for (byte b : buffer.toString().getBytes(StandardCharsets.UTF_8)) {
+                //System.out.printf("%d ", b);
                 if (b == 0x0d) continue;
                 bufferBytes.add(b);
             }
+            //System.out.println();
             //System.out.println("== correct ==");
             for (byte b : correct.getBytes(StandardCharsets.UTF_8)) {
+                //System.out.printf("%d ", b);
                 if (b == 0x0d) continue;
                 correctBytes.add(b);
             }
