@@ -66,7 +66,7 @@ public class Solver {
             long end = System.currentTimeMillis();
 
             if (p.exitValue() != 0) {
-                return new ResultSet(end-start, ErrorCode.CE);
+                return new ResultSet(end-start, ErrorCode.WA);
             }
 
             List<Byte> bufferBytes = new ArrayList<>();
@@ -99,7 +99,7 @@ public class Solver {
             e.printStackTrace();
         } catch (InterruptedException e) {
             p.destroy();
-            return new ResultSet(0, ErrorCode.CE);
+            return new ResultSet(0, ErrorCode.WA);
         }
         p.destroy();
         return new ResultSet(0, ErrorCode.CE);
