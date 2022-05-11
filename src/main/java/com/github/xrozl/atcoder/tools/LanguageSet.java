@@ -10,7 +10,8 @@ public enum LanguageSet {
     PERL(false, null, "perl", false, null, "\u001b[00;33mPerl\u001b[00m"),
     RUBY(false, null, "ruby", false, null, "\u001b[00;33mRuby\u001b[00m"),
     GO(false, null, "go run", false, null, "\u001b[00;33mGo\u001b[00m"),
-    PYTHON(false, null, "python3", false, null, "\u001b[00;33mPython\u001b[00m");
+    PYTHON(false, null, "python3", false, null, "\u001b[00;33mPython\u001b[00m"),
+    NIM(false, null, "nim c -r", false, null, "\u001b[00;33mNim\u001b[00m");
 
     private boolean compile, errorCheck;
     private String cmd4Compile, cmd4Run, L4Mat, errorChk;

@@ -17,4 +17,5 @@ public class ResultSet {
     public ErrorCode getErrorCode() {
         return errorCode;
     }
+
 }
