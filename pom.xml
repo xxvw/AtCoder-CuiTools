@@ -43,7 +43,6 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
-                        <!-- main class -->
                         <manifest><mainClass>com.github.xrozl.atcoder.tools.AtCoderTools</mainClass></manifest>
                     </archive>
                 </configuration>
