@@ -13,7 +13,7 @@ import java.util.Locale;
 public class AtCoderTools {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        args = new String[]{"abc243", "a", "Main.java"};
+        // args = new String[]{"abc243", "a", "Main.java"};
         if (args.length < 3) {
             System.out.println("Usage: atc <contest> <level> <program_file>");
             System.exit(1);
